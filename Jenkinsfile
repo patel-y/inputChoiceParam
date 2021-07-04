@@ -15,7 +15,13 @@
 				parameters:[choice(name: 'Param1' ,choices : array3.name, description: "Select a database to your choice"),
 					   text(name: 'Add_DataSet', defaultValue: '', description: "input your dataset")]
 				)
-				
+				  
+			        userInput2 = input(
+				message: 'Deployment env', ok : "Deploy", id :'DB_id',
+				parameters:[choice(name: 'Target Env' ,choices : [DEV,TEST,LIVE], description: "Select a target env")]
+					  
+				)
+				  
 				  
 			  }
                      }	
