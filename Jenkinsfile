@@ -1,13 +1,13 @@
  pipeline {
            agent any
            stages {
-                stage("Hello") {
+                stage("Read File") {
                      steps {
                           script{
                                           
                           def data3 = readFile "file.txt"
-						              println(data3)
-			
+	                  println(data3)
+			  }
                      }	
                 }
            }
