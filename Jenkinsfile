@@ -11,9 +11,10 @@
 				 def array3 = readJSON text:data3
 				userInput1 = input(
 				message: 'What are we deploying today?', ok : "Deploy", id :'DB_id',
-				parameters:[choice(choices : array3.name, description: "Select a database to your choice"
+				parameters:[choice(choices : array3.name, description: "Select a database to your choice")
 				text(name: 'Add_DataSet', defaultValue: '', description: "input your dataset")
 				])
+				
 				  
 			  }
                      }	
