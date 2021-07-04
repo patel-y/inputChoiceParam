@@ -12,7 +12,7 @@
 				  println(array3)
 				userInput1 = input(
 				message: 'What are we deploying today?', ok : "Deploy", id :'DB_id',
-				parameters:[choice(choices : array3.name, description: "Select a database to your choice")]
+				parameters:[choice(name: 'Param1' ,choices : array3.name, description: "Select a database to your choice")]
 				)
 				
 				  
