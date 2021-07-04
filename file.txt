@@ -1,1 +1,1 @@
-{'name':'Demogroup1','reference':'Group-2'},{'name':'Demogroup','reference':'Group-2'},{'name':'Demogroup','reference':'Group-2'},{'name':'Demogroup','reference':'Group-2'},{'name':'Demogroup','reference':'Group-2'}
+[{'name':'Demogroup1','reference':'Group-2'},{'name':'Demogroup','reference':'Group-2'},{'name':'Demogroup','reference':'Group-2'},{'name':'Demogroup','reference':'Group-2'},{'name':'Demogroup','reference':'Group-2'}]
