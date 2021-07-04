@@ -18,7 +18,7 @@
 				  
 			        userInput2 = input(
 				message: 'Deployment env', ok : "Deploy", id :'DB_id',
-				parameters:[choice(name: 'Target Env' ,choices : [DEV,TEST,LIVE], description: "Select a target env")]
+				parameters:[choice(name: 'Target Env' ,choices : ['DEV','TEST','LIVE'], description: "Select a target env")]
 					  
 				)
 				  
