@@ -10,7 +10,7 @@ pipeline {
         }
           stage('call to DSL Job') {
             steps {
-              build job: 'SeedJob', parameters: [[$class: 'StringParameterValue', name: 'param1', value: params.param1]]
+              build job: 'SeedJob', parameters: [[$class: 'StringParameterValue', name: 'param1', value: params.param1],[$class: 'StringParameterValue', name: 'param2', value: params.param2]]
             }
         }
         
