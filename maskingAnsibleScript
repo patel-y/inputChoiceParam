@@ -1,0 +1,12 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('execute command') {
+            steps {
+                println(param1)
+                println(param2)
+            }
+        }
+    }
+}
