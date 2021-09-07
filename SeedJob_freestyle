@@ -1,0 +1,45 @@
+List jobConfigs = [
+    [
+		param1:param1,
+		param2:param2,
+		cronTab:cronTab,
+		JobName:JobName
+    ]
+]
+
+jobConfigs.each { jobConfig ->
+
+   pipelineJob("${jobConfig.JobName}") {
+
+  def repo = 'https://github.com/techappuser/inputChoiceParam.git'
+
+  triggers {
+    cron("${jobConfig.cronTab}")
+  }
+   parameters {
+                       stringParam('param1',  "${jobConfig.param1}", 'my param1')
+					  stringParam('param2',  "${jobConfig.param2}", 'my param1')
+                    }
+  
+  description("Pipeline for $repo")
+
+  definition {
+    cpsScm {
+      scm {
+        git {
+          remote { url(repo) }
+          branches('main')
+          scriptPath('executeChildJob')
+          extensions { }  // required as otherwise it may try to tag the repo, which you may not want
+        }
+
+
+      }
+    }
+  }
+  
+  
+  
+  
+}
+}
