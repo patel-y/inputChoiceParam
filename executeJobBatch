@@ -10,7 +10,7 @@ pipeline {
               echo 'Job List file found'
               readFile("JobListToExecute").split('\n').each { line, count -> def fields = line.split(',')
                            //  for(String item: fields) {
-                                           println fileds[1] + fileds[2]
+                                           println fields[1] + fields[2]
 
                              //              }
                              }
