@@ -6,20 +6,14 @@ pipeline {
         stage('Cleanup afterwards') {
             // cleanup logic
             steps {
-                node() {
-                    sh 'ls -la'
-                }
-            }
-        }
-   }
-   post { 
-       success { 
-           script {
+             script {
                jobsToDelete = ["<JOB_TO_DELETE"]
                deleteJob(Hudson.instance.items, jobsToDelete)
            }
-       }
+            }
+        }
    }
+ 
 }
 
 def deleteJob(items, jobsToDelete) {
