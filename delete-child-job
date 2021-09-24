@@ -52,7 +52,7 @@ def deleteJob(items, jobsToDelete) {
     items.each { item ->
       if (item.class.canonicalName != 'com.cloudbees.hudson.plugins.folder.Folder') {
         if (jobsToDelete.contains(item.fullName)) {
-          manager.listener.logger.println(item.fullName)
+        //  manager.listener.logger.println(item.fullName)
           item.delete()
         }
       }
