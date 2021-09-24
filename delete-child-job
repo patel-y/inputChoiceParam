@@ -4,6 +4,7 @@ pipeline {
    agent none
    stages {
       stage('Check Parameter') {
+	       steps {
       script { 
                     properties([
                         parameters([
@@ -27,6 +28,7 @@ pipeline {
                         ])
                     ])
                 }
+	       }
       }
         stage('Cleanup afterwards') {
             // cleanup logic
