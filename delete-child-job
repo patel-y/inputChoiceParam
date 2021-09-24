@@ -30,10 +30,13 @@ pipeline {
                 }
 	       }
       }
-        stage('Cleanup afterwards') {
+        stage('Deleting Job') {
             // cleanup logic
             steps {
              script {
+		     for (int i = startBuild.toInteger(); i <= endBuild.toInteger(); i++) {
+		     println(i)				
+		 }
                jobsToDelete = ["<JOB_TO_DELETE"]
                deleteJob(Hudson.instance.items, jobsToDelete)
            }
