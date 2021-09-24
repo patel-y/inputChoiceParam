@@ -1,1 +1,34 @@
+#!/usr/bin/env groovy
+import hudson.model.*
+pipeline {
+   agent none
+   stages {
+        stage('Cleanup afterwards') {
+            // cleanup logic
+            steps {
+                node('worker') {
+                    sh 'ls -la'
+                }
+            }
+        }
+   }
+   post { 
+       success { 
+           script {
+               jobsToDelete = ["<JOB_TO_DELETE"]
+               deleteJob(Hudson.instance.items, jobsToDelete)
+           }
+       }
+   }
+}
 
+def deleteJob(items, jobsToDelete) {
+    items.each { item ->
+      if (item.class.canonicalName != 'com.cloudbees.hudson.plugins.folder.Folder') {
+        if (jobsToDelete.contains(item.fullName)) {
+          manager.listener.logger.println(item.fullName)
+          item.delete()
+        }
+      }
+    }
+}
