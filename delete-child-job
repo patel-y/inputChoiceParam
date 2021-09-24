@@ -35,10 +35,12 @@ pipeline {
             steps {
              script {
 		     for (int i = startBuild.toInteger(); i <= endBuild.toInteger(); i++) {
-		     println(i)				
+				jobName=ScriptName + "_" + i
+		     		println("Deleting Job : " + jobName)	
+			        jobsToDelete = [jobName]
+                                deleteJob(Hudson.instance.items, jobsToDelete)
 		 }
-               jobsToDelete = ["<JOB_TO_DELETE"]
-               deleteJob(Hudson.instance.items, jobsToDelete)
+           
            }
             }
         }
