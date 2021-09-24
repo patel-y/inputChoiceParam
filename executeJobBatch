@@ -4,6 +4,7 @@ pipeline {
     stages {
           stage('call to DSL Job') {
             steps {
+            step {
             if (fileExists("JobListToExecute"))
        {
               echo 'Job List file found'
@@ -15,6 +16,7 @@ pipeline {
                              }
               } else {echo 'csv Not found. Failing.'}
               //build job: 'SeedJob', parameters: [[$class: 'StringParameterValue', name: 'param1', value: params.param1],[$class: 'StringParameterValue', name: 'param2', value: params.param2]]
+            }
             }
         }
         
