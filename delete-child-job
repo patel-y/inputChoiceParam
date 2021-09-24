@@ -3,6 +3,31 @@ import hudson.model.*
 pipeline {
    agent none
    stages {
+      stage('Check Parameter') {
+      script { 
+                    properties([
+                        parameters([
+                            
+                           string(
+                                defaultValue: 'scripttodelete', 
+                                name: 'ScriptName', 
+                                trim: true
+                            ),
+							 string(
+                                defaultValue: '1', 
+                                name: 'startBuild', 
+                                trim: true
+                            ),
+							 string(
+                                defaultValue: '10', 
+                                name: 'endBuild', 
+                                trim: true
+                            )
+                           
+                        ])
+                    ])
+                }
+      }
         stage('Cleanup afterwards') {
             // cleanup logic
             steps {
