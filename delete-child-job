@@ -6,7 +6,7 @@ pipeline {
         stage('Cleanup afterwards') {
             // cleanup logic
             steps {
-                node('worker') {
+                node() {
                     sh 'ls -la'
                 }
             }
