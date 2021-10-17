@@ -1,0 +1,34 @@
+import jenkins.model.*
+
+pipeline {
+    agent any
+    stages {
+        stage('Deleting Job') {
+            steps {
+			script{
+			
+			// Set how old the jobs to list should be (in days)
+			def numDaysBack = params.numDaysBack.toInteger()
+            def startPattern= params.nameStartWith
+            println "Started [" +numDaysBack + "] " + startPattern
+			def cutOfDate = System.currentTimeMillis() - 1000L * 60 * 60 * 24 * numDaysBack
+
+		    hudson.model.Hudson.instance.items.findAll{job -> job}.each { job ->
+			println("Job: " + job.name)
+			  build = job.getLastSuccessfulBuild()
+			  if (build != null && build.getTimeInMillis() < cutOfDate) {
+				 if (job.name.startsWith(startPattern))
+				 {
+				   println("Deleting Job: " + job.name)
+				   job.delete()
+				 }
+			  }
+			}
+			
+			
+			
+		}
+            }
+        }
+    }
+}
